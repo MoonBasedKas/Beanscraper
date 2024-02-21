@@ -2,6 +2,9 @@
 import requests
 from bs4 import BeautifulSoup
 
+"""
+Holds all the data for a single course.
+"""
 class course:
 
     def __init__(self, data):
@@ -23,46 +26,55 @@ class course:
         self.fee = data[15]
         self.book = data[16]
 
-
+"""
+Handles all of the courses for a single subject.
+"""
 class subject:
 
     def __init__(self, term, sub):
 
-        url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
-        # url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+term+"&p_subj="+sub
+        # url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
+        url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+term+"&p_subj="+sub
 		
 
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-        content = soup.get_text().split("\n")
-        # print(content)
-        cleancontent = []
-        for x in content:
-            if x != content[0]:
-                cleancontent.append(x)
+        z = soup.find_all("td")
 
-        for x in range(19):
-            cleancontent.pop(0)
-            cleancontent.pop(-1)
-        cleancontent.pop(0)
-        data = cleancontent # I don't want to bother overwriting cleancontent as data rn.
-        print(cleancontent)
-        # courses(cleancontent)
+        nones = 0
 
-        cdata = []
-        self.courselist = []
-        # print()
-        while data != []:
-            cdata = []
-            for x in range(17):
-                cdata.append(data[0])
-                data.pop(0)
-            self.courselist.append(course(cdata))
+        for x in z[0:-22]:
+
+            print(x.string)
+
+        print(nones)
+
+        # content = soup.get_text().split("\n")
+
+        # cleancontent = []
+        # # for x in content:
+        # #     if x != content[0]:
+        # #         cleancontent.append(x)
+
+        # # for x in range(19):
+        # #     cleancontent.pop(0)
+        # #     cleancontent.pop(-1)
+        # # cleancontent.pop(0)
+        # # data = cleancontent # I don't want to bother overwriting cleancontent as data rn.
+        # # print(cleancontent)
+        # # courses(cleancontent)
+
+        # cdata = []
+        # self.courselist = []
+        # print(data)
+
 
 
 class SubjectList:
-    def __init__():
-        pass
+    def __init__(self, date, tags):
+        self.subjects = []
+        for tag in tags:
+            self.subjects.append(subject(date, tag))
 
 def main():
   
@@ -73,15 +85,24 @@ def main():
 
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-    content = soup.get_text().split("\n")
-    # print(content)
-    cleancontent = []
-    for x in content:
-        if x != content[0]:
-            cleancontent.append(x)
-    print(soup.select) # Course tags.
-    subject([],[])
-    # print(soup.tr)     # Semesters.
+
+
+    z = soup.find_all("option")
+    dates = []
+    subjects = []
+
+    tag = []
+
+    for elem in z:
+        tag = elem.get("value")
+        if tag.isnumeric():
+            dates.append(tag)
+        else:
+            subjects.append(tag)
+    # print(subjects)
+
+    subject("202420", "SPAN")
+    # SubjectList(dates[-1],subjects)
 
     
 
