@@ -77,6 +77,12 @@ class SubjectList:
 
         for tag in tags:
             self.subjects.append(subject(date, tag))
+        
+        """ TODO
+        Figure out what to do for courses with multiple professors.
+
+        Idea update professor into a list, append new professor to previous, and delete empty course.
+        """
 
 def main():
   
