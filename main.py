@@ -68,7 +68,9 @@ class subject:
 
 
 
-
+"""
+Handles all subjects. Current main should be in here.
+"""
 class SubjectList:
     def __init__(self, date, tags):
         self.subjects = []
