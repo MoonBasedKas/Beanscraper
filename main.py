@@ -1,4 +1,6 @@
-"test"
+"""
+Prototype for NeoBean Scrapper
+"""
 import requests
 from bs4 import BeautifulSoup
 
@@ -35,10 +37,9 @@ class subject:
 
         # url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
         url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+term+"&p_subj="+sub
-	    # print(sub)
+
         self.courses = []
 
-        # print(sub, term)
 
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
@@ -65,38 +66,6 @@ class subject:
                 classdata.pop(0)
 
 
-
-            # for x in range(17):
-            #     data.append(cleantext[0])
-            #     cleantext.pop(0)
-            # print(data[0])
-            # self.courses.append(course(data))
-
-
-        # text = soup.get_text().split("\n")
-        # # print(text)
-
-        # cleantext = text
-
-        # # print(cleantext)
-
-        # while cleantext[0] != "Bookstore Link":
-        #     print("\""+cleantext[0]+"\"")
-        #     if cleantext [0] == "No courses found matching your term and subject":
-        #         return None
-        #     cleantext.pop(0)
-
-
-        # data = []
-        # print(cleantext)
-        # # print(sub)
-        # while cleantext[0] != "*Campus":
-        #     data = []
-        #     for x in range(17):
-        #         data.append(cleantext[0])
-        #         cleantext.pop(0)
-        #     print(data[0])
-        #     self.courses.append(course(data))
 
 
 
@@ -132,9 +101,6 @@ def main():
             dates.append(tag)
         else:
             subjects.append(tag)
-    # print(subjects)
-
-    # subject(dates[-1], "BIOL")
     SubjectList(dates[-1],subjects)
 
     
