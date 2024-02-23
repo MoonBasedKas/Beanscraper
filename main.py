@@ -10,6 +10,8 @@ Holds all the data for a single course.
 class course:
 
     def __init__(self, data):
+        self.dlist = data[0] # For quick access to all elements.
+
         self.crn = data[0]
         self.Cnumber = data[1]
         self.campus = data[2]
@@ -35,7 +37,6 @@ class subject:
 
     def __init__(self, term, sub):
 
-        # url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
         url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+term+"&p_subj="+sub
 
         self.courses = []
@@ -44,8 +45,6 @@ class subject:
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
         classdata = soup.find_all("td")
-
-        courses = []
 
         string = ""
 
@@ -57,11 +56,11 @@ class subject:
             for x in range(17):
                 string = classdata[0].string
                 if string == "None":
-                    string = " "
+                    string = "N/A"
                 data.append(string)
                 classdata.pop(0)
-            print(data[0:3], "===============", classdata[0].string, string)
-            courses.append(data)
+            # print(data[0:3], "===============", classdata[0].string, string)
+            self.courses.append(course(data))
             if string == "Bookstore Link":
                 classdata.pop(0)
 
@@ -85,6 +84,21 @@ class SubjectList:
 
         Idea update professor into a list, append new professor to previous, and delete empty course.
         """
+    
+    def wrcvs(self):
+        # print(self.subjects[0].courses[0].crn)
+        string = ""
+        fp = open("datacheck.csv")
+        for subject in self.subjects:
+            for course in subject.courses:
+                string = ""
+                for val in course.dlist:
+                    string = string + val + ","
+                string = string[0:-1] + "\n"
+                print(type(string))
+                fp.write(string)
+        fp.close()
+        pass
 
 def main():
   
@@ -109,7 +123,9 @@ def main():
             dates.append(tag)
         else:
             subjects.append(tag)
-    SubjectList(dates[-1],subjects)
+    data = SubjectList(dates[-1],subjects)
+
+    data.wrcvs()
 
     
 
