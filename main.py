@@ -35,44 +35,77 @@ class subject:
 
         # url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
         url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+term+"&p_subj="+sub
-		
+	    # print(sub)
+        self.courses = []
+
+        # print(sub, term)
 
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
-        z = soup.find_all("td")
+        classdata = soup.find_all("td")
 
-        nones = 0
+        courses = []
 
-        for x in z[0:-22]:
+        string = ""
 
-            print(x.string)
+        data = []
 
-        print(nones)
+        while len(classdata) > 17:
+            string = classdata[0].string
+            data = []
+            for x in range(17):
+                string = classdata[0].string
+                if string == "None":
+                    string = " "
+                data.append(string)
+                classdata.pop(0)
+            print(data[0:3], "===============", classdata[0].string, string)
+            courses.append(data)
+            if string == "Bookstore Link":
+                classdata.pop(0)
 
-        # content = soup.get_text().split("\n")
 
-        # cleancontent = []
-        # # for x in content:
-        # #     if x != content[0]:
-        # #         cleancontent.append(x)
 
-        # # for x in range(19):
-        # #     cleancontent.pop(0)
-        # #     cleancontent.pop(-1)
-        # # cleancontent.pop(0)
-        # # data = cleancontent # I don't want to bother overwriting cleancontent as data rn.
-        # # print(cleancontent)
-        # # courses(cleancontent)
+            # for x in range(17):
+            #     data.append(cleantext[0])
+            #     cleantext.pop(0)
+            # print(data[0])
+            # self.courses.append(course(data))
 
-        # cdata = []
-        # self.courselist = []
-        # print(data)
+
+        # text = soup.get_text().split("\n")
+        # # print(text)
+
+        # cleantext = text
+
+        # # print(cleantext)
+
+        # while cleantext[0] != "Bookstore Link":
+        #     print("\""+cleantext[0]+"\"")
+        #     if cleantext [0] == "No courses found matching your term and subject":
+        #         return None
+        #     cleantext.pop(0)
+
+
+        # data = []
+        # print(cleantext)
+        # # print(sub)
+        # while cleantext[0] != "*Campus":
+        #     data = []
+        #     for x in range(17):
+        #         data.append(cleantext[0])
+        #         cleantext.pop(0)
+        #     print(data[0])
+        #     self.courses.append(course(data))
 
 
 
 class SubjectList:
     def __init__(self, date, tags):
         self.subjects = []
+
+        courses = 0
+
         for tag in tags:
             self.subjects.append(subject(date, tag))
 
@@ -101,8 +134,8 @@ def main():
             subjects.append(tag)
     # print(subjects)
 
-    subject("202420", "SPAN")
-    # SubjectList(dates[-1],subjects)
+    # subject(dates[-1], "BIOL")
+    SubjectList(dates[-1],subjects)
 
     
 
