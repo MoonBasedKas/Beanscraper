@@ -10,7 +10,7 @@ Holds all the data for a single course.
 class course:
 
     def __init__(self, data):
-        self.dlist = data[0] # For quick access to all elements.
+        self.dlist = data # For quick access to all elements.
 
         self.crn = data[0]
         self.Cnumber = data[1]
@@ -88,12 +88,13 @@ class SubjectList:
     def wrcvs(self):
         # print(self.subjects[0].courses[0].crn)
         string = ""
-        fp = open("datacheck.csv")
+        fp = open("datacheck.csv", "w")
         for subject in self.subjects:
+            
             for course in subject.courses:
                 string = ""
                 for val in course.dlist:
-                    string = string + val + ","
+                    string = string + str(val) + ","
                 string = string[0:-1] + "\n"
                 print(type(string))
                 fp.write(string)
