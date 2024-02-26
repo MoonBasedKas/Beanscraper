@@ -83,6 +83,7 @@ class SubjectList:
         Figure out what to do for courses with multiple professors.
 
         Idea update professor into a list, append new professor to previous, and delete empty course.
+        Add a specific case for Recitations.
         """
     
     def wrcvs(self):
