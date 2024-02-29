@@ -3,43 +3,80 @@ Prototype for NeoBean Scrapper
 """
 import requests
 from bs4 import BeautifulSoup
+# import inspect
 
 """
 Holds all the data for a single course.
 """
-class course:
+class LectureSession:
+
+    def __init__(self, info):
+        self.day = ""
+        self.location = ""
+        self.start = ""
+        self.end = ""
+        pass
+
+
+
+class Course:
 
     def __init__(self, data):
-        self.dlist = data # For quick access to all elements.
+        self.dlist = data # Raw data.
 
-        self.crn = data[0]
-        self.Cnumber = data[1]
-        self.campus = data[2]
-        self.day = data[3]
-        self.length = data[4]
-        self.time = data[5]
-        self.room = data[6]
-        self.hrs = data[7]
-        self.type = data[8]
-        self.name = data[9]
-        self.teacher = data[10]
-        self.seats = data[11]
-        self.limits = data[12]
-        self.enroll = data[13]
-        self.waitlist = data[14]
-        self.fee = data[15]
-        self.book = data[16]
+        self.crn = str(data[0])
+        self.Cnumber = str(data[1])
+        self.campus = str(data[2])
+        self.day = str(data[3]).replace(" ", "")
+        self.length = str(data[4])
+        self.time = str(data[5])
+        self.room = str(data[6])
+        self.hrs = str(data[7])
+        self.type = str(data[8])
+        self.name = str(data[9])
+        self.teacher = str(data[10])
+        self.seats = str(data[11])
+        self.limits = str(data[12])
+        self.enroll = str(data[13])
+        self.waitlist = str(data[14])
+        self.fee = str(data[15])
+        self.book = str(data[16])
+
+    """
+    Gives a list of all the attributes since inputing them all one by one is PAIN.
+    """
+    def attributeList(self):
+            list = []
+            list.append(self.crn)
+            list.append(self.Cnumber)
+            list.append(self.campus) 
+            list.append(self.day )
+            list.append(self.length)
+            list.append(self.time)
+            list.append(self.room)
+            list.append(self.hrs )
+            list.append(self.type)
+            list.append(self.name)
+            list.append(self.teacher)
+            list.append(self.seats )
+            list.append(self.limits)
+            list.append(self.enroll )
+            list.append(self.waitlist)
+            list.append(self.fee )
+            list.append(self.book) 
+
 
 """
 Handles all of the courses for a single subject.
 """
-class subject:
+class Subject:
 
     def __init__(self, term, sub):
 
         url = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+term+"&p_subj="+sub
 
         self.courses = []
+        self.subject = sub
 
 
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
@@ -60,10 +97,34 @@ class subject:
                 data.append(string)
                 classdata.pop(0)
             # print(data[0:3], "===============", classdata[0].string, string)
-            self.courses.append(course(data))
+            self.courses.append(Course(data))
             if string == "Bookstore Link":
                 classdata.pop(0)
+            
+            # cleanSubject()
 
+    """
+    Cleans up classes without a crn.
+    """
+    def cleanSubject(self):
+        i = 0
+        l = len(self.courses)
+        temp = None
+
+        while i < l:
+            temp = self.courses[i]
+            if temp.crn == "None":
+                if temp.campus == "None": # Two professors
+                    # print(temp.dlist[9])
+                    self.courses[i - 1].teacher += " " + str(temp.dlist[9])
+                    # print(self.courses[i - 1].teacher)
+                    self.courses.pop(i)
+                    i -= 1
+                    l -= 1
+                else: # Recitations
+                    pass
+                
+            i += 1
 
 
 
@@ -73,31 +134,39 @@ Handles all subjects. Current main should be in here.
 class SubjectList:
     def __init__(self, date, tags):
         self.subjects = []
-
-        courses = 0
+        temp = None
 
         for tag in tags:
-            self.subjects.append(subject(date, tag))
-        
-        """ TODO
-        Figure out what to do for courses with multiple professors.
+            temp = Subject(date, tag)
+            temp.cleanSubject()
+            self.subjects.append(temp)
 
-        Idea update professor into a list, append new professor to previous, and delete empty course.
-        Add a specific case for Recitations.
-        """
+        # print(self.subjects)
+
+        
+    """ 
+    TODO: Have it run through each one.
+    """
+    def cleanSubjects(self):
+        pass
     
-    def wrcvs(self):
-        # print(self.subjects[0].courses[0].crn)
+    """
+    Writes to a CVS all subjects. I think I just broke this function.
+    TODO Change it to work with the actual values rather than the raw data list.
+    """
+    def writeCVS(self):
         string = ""
         fp = open("datacheck.csv", "w")
         for subject in self.subjects:
             
             for course in subject.courses:
                 string = ""
+                
                 for val in course.dlist:
                     string = string + str(val) + ","
+                print(string)
                 string = string[0:-1] + "\n"
-                print(type(string))
+
                 fp.write(string)
         fp.close()
         pass
@@ -106,7 +175,7 @@ def main():
   
     url = "https://banweb7.nmt.edu/pls/PROD/hwzkcrof.p_uncgslctcrsoff"
     
-    url1 = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
+    # url1 = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
 		
 
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
@@ -125,9 +194,11 @@ def main():
             dates.append(tag)
         else:
             subjects.append(tag)
+
     data = SubjectList(dates[-1],subjects)
 
-    data.wrcvs()
+
+    data.writeCVS() 
 
     
 
