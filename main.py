@@ -131,14 +131,39 @@ class Subject:
 """
 Handles all subjects. Current main should be in here.
 """
-class SubjectList:
-    def __init__(self, date, tags):
-        self.subjects = []
+class Scrapper:
+    url = "https://banweb7.nmt.edu/pls/PROD/hwzkcrof.p_uncgslctcrsoff"
+    subjects = []
+    date = ""
+    subs = []
+    def __init__(self):
+
+        soup = BeautifulSoup(requests.get(self.url).content, "html.parser")
+
+
+        z = soup.find_all("option")
+        dates = []
+        self.subs = []
+
+        tag = []
+
+        for elem in z:
+            tag = elem.get("value")
+            if tag.isnumeric():
+                dates.append(tag)
+            else:
+                self.subs.append(tag)
+
         temp = None
 
-        for tag in tags:
-            temp = Subject(date, tag)
+        self.date = str(dates[-1])
+        print(self.date)
+        print(self.subjects)
+
+        for tag in self.subs:
+            temp = Subject(self.date, str(tag))
             temp.cleanSubject()
+            print(tag)
             self.subjects.append(temp)
 
         # print(self.subjects)
@@ -173,32 +198,32 @@ class SubjectList:
 
 def main():
   
-    url = "https://banweb7.nmt.edu/pls/PROD/hwzkcrof.p_uncgslctcrsoff"
+    # url = "https://banweb7.nmt.edu/pls/PROD/hwzkcrof.p_uncgslctcrsoff"
     
-    # url1 = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
+    # # url1 = "http://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term="+"202420"+"&p_subj="+"SPAN"
 		
 
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    # soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
 
 
-    z = soup.find_all("option")
-    dates = []
-    subjects = []
+    # z = soup.find_all("option")
+    # dates = []
+    # subjects = []
 
-    tag = []
+    # tag = []
 
-    for elem in z:
-        tag = elem.get("value")
-        if tag.isnumeric():
-            dates.append(tag)
-        else:
-            subjects.append(tag)
+    # for elem in z:
+    #     tag = elem.get("value")
+    #     if tag.isnumeric():
+    #         dates.append(tag)
+    #     else:
+    #         subjects.append(tag)
 
-    data = SubjectList(dates[-1],subjects)
+    data = Scrapper()
 
 
-    data.writeCVS() 
+    # data.writeCVS() 
 
     
 
