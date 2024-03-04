@@ -41,7 +41,7 @@ class Course:
         self.waitlist = str(data[14])
         self.fee = str(data[15])
         self.book = str(data[16])
-
+        # TODO add the section as part of cleaning.
     """
     Gives a list of all the attributes since inputing them all one by one is PAIN.
     """
@@ -136,6 +136,7 @@ class Scrapper:
     subjects = []
     date = ""
     subs = []
+
     def __init__(self):
 
         soup = BeautifulSoup(requests.get(self.url).content, "html.parser")
