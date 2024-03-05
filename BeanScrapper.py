@@ -4,6 +4,7 @@ Prototype for NeoBean Scrapper
 import requests
 from bs4 import BeautifulSoup
 import json
+from datetime import datetime
 
 """
 Holds all the data for a single course.
@@ -11,27 +12,36 @@ Holds all the data for a single course.
 class LectureSession:
 
     def __init__(self, info):
-        self.day = ""
-        self.location = ""
-        self.start = ""
-        self.end = ""
+        self.day = info[0]
+        self.location = info[1]
+        self.start = info[2]
+        self.end = info[3]
         pass
+
+    def jsonify(self):
+        data = {}
+        data["Day"] = self.day
+        data["Location"] = self.location
+        data["StartTime"] = self.start
+        data["EndTime"] = self.end
+        return data
 
 
 
 class Course:
 
-    Sessions = []
+   
 
     # Adds everything 
     def __init__(self, data, subject):
-        self.dlist = data # Raw data.
+        self.dlist = data                           # Raw data.
+        self.Sessions = []
 
         self.subject = subject
         self.crn = str(data[0])
         self.Cnumber = str(data[1])
         self.campus = str(data[2])
-        self.day = str(data[3]).replace(" ", "")
+        self.day = str(data[3]).replace(" ", "")    # Merges into Sessions
         self.length = str(data[4])                  # Merges into Sessions
         self.time = str(data[5])                    # Merges into Sessions
         self.room = str(data[6])                    # Merges into Sessions
@@ -45,8 +55,11 @@ class Course:
         self.waitlist = str(data[14])
         self.fee = str(data[15])
         self.book = str(data[16])
+        now = datetime.now()
 
+        self.lastUpdated = now.strftime("%D:%H:%M:%S")
         self.buildSessions()
+
 
     def buildSessions(self):
         times = self.time.split("-")
@@ -59,12 +72,15 @@ class Course:
             self.Sessions.append(LectureSession(info))
         return 0
 
+
+    """
+    Adds additional attached sessions.
+    """
     def addSessions(self, info):
         times = info[-1].split("-")
         info[2] = times[0]
         info.append(times[1])
         self.Sessions.append(LectureSession(info))
-
 
 
     """
@@ -90,27 +106,61 @@ class Course:
             list.append(self.fee )
             list.append(self.book) 
     
+
     """
     Final step in cleaning process. Does any type conversions as N/A's cause problems on this.
     """
     def dataPrep(self):
-        self.section = self.Cnumber.split("-")[1] # Can't be a string due to section numbers containing letters.
+        self.section = self.Cnumber.split("-")[1] # Can't be a integer due to section numbers containing letters.
         self.seats = int(self.waitlist)
         self.limits = int(self.waitlist)
         self.enroll = int(self.waitlist)
         self.waitlist = int(self.waitlist)
         self.hrs = int(self.hrs)
+        self.Cnumber = self.Cnumber.split(" ")[1].split("-")[0] # Can't be integer due to labs.
 
         if self.fee != "N/A":
             self.fee = float(self.fee[1:])
         else:
             self.fee = 0.0
 
+
     """
     Returns a dictionary that can easily be exported.
     """
     def jsonify(self):
         jdict = {}
+        jdict["Title"] = self.name
+        jdict["Subject"] = self.subject
+        jdict["CourseNumber"] = self.Cnumber
+        jdict["CRN"] = self.crn
+        jdict["Section"] = self.section
+
+        jdict["Campus"] = self.campus
+        jdict["CreditHours"] = self.hrs
+        # jdict["classType"] = self.type
+        jdict["Professor"] = self.teacher
+
+        jdict["Seats"] = self.seats
+        jdict["SeatCapacity"] = self.limits
+        jdict["Enrolled"] = self.enroll
+        jdict["Waitlist"] = self.waitlist
+        jdict["CourseFee"] = self.fee
+
+        jdict["BookStore"] = self.book
+
+
+
+        meetings = []
+        for meet in self.Sessions:
+            meetings.append(meet.jsonify())
+
+        jdict["Sessions"] = meetings
+        jdict["LastUpdated"] = self.lastUpdated
+
+        return jdict
+
+
 
 """
 Handles all of the courses for a single subject.
@@ -142,7 +192,7 @@ class Subject:
                     string = "N/A"
                 data.append(string)
                 classdata.pop(0)
-            # print(data[0:3], "===============", classdata[0].string, string)
+
             self.courses.append(Course(data, sub))
             if string == "Bookstore Link":
                 classdata.pop(0)
@@ -178,7 +228,6 @@ class Subject:
         
 
         for C in self.courses:
-            print(C.crn)
             C.dataPrep()
 
 
@@ -213,16 +262,13 @@ class Scrapper:
         temp = None
 
         self.date = str(dates[-1])
-        print(self.date)
-        print(self.subjects)
 
         for tag in self.subs:
             temp = Subject(self.date, str(tag))
             temp.cleanSubject()
-            print(tag)
             self.subjects.append(temp)
 
-        # print(self.subjects)
+
 
         
     """ 
@@ -245,12 +291,28 @@ class Scrapper:
                 
                 for val in course.dlist:
                     string = string + str(val) + ","
-                print(string)
+
                 string = string[0:-1] + "\n"
 
                 fp.write(string)
         fp.close()
-        pass
+    
+
+    def writeJson(self):
+        jsonData = {}
+
+        for sub in self.subjects:
+            for course in sub.courses:
+                jsonData[course.crn] = course.jsonify()
+
+        json_object = json.dumps(jsonData, indent=4)
+        
+
+        with open("CourseList.json", "w") as outfile:
+            outfile.write(json_object)
+
+
+        
 
 def main():
   
@@ -278,8 +340,10 @@ def main():
 
     data = Scrapper()
 
+    Scrapper.subjects[0].courses[0].jsonify()
 
-    data.writeCVS() 
+
+    data.writeJson() 
 
     
 
