@@ -3,7 +3,7 @@ Prototype for NeoBean Scrapper
 """
 import requests
 from bs4 import BeautifulSoup
-# import inspect
+import json
 
 """
 Holds all the data for a single course.
@@ -23,16 +23,18 @@ class Course:
 
     Sessions = []
 
-    def __init__(self, data):
+    # Adds everything 
+    def __init__(self, data, subject):
         self.dlist = data # Raw data.
 
+        self.subject = subject
         self.crn = str(data[0])
         self.Cnumber = str(data[1])
         self.campus = str(data[2])
         self.day = str(data[3]).replace(" ", "")
-        self.length = str(data[4])
-        self.time = str(data[5])
-        self.room = str(data[6])
+        self.length = str(data[4])                  # Merges into Sessions
+        self.time = str(data[5])                    # Merges into Sessions
+        self.room = str(data[6])                    # Merges into Sessions
         self.hrs = str(data[7])
         self.type = str(data[8])
         self.name = str(data[9])
@@ -64,7 +66,7 @@ class Course:
         self.Sessions.append(LectureSession(info))
 
 
-        pass
+
     """
     Gives a list of all the attributes since inputing them all one by one is PAIN.
     """
@@ -87,7 +89,28 @@ class Course:
             list.append(self.waitlist)
             list.append(self.fee )
             list.append(self.book) 
+    
+    """
+    Final step in cleaning process. Does any type conversions as N/A's cause problems on this.
+    """
+    def dataPrep(self):
+        self.section = self.Cnumber.split("-")[1] # Can't be a string due to section numbers containing letters.
+        self.seats = int(self.waitlist)
+        self.limits = int(self.waitlist)
+        self.enroll = int(self.waitlist)
+        self.waitlist = int(self.waitlist)
+        self.hrs = int(self.hrs)
 
+        if self.fee != "N/A":
+            self.fee = float(self.fee[1:])
+        else:
+            self.fee = 0.0
+
+    """
+    Returns a dictionary that can easily be exported.
+    """
+    def jsonify(self):
+        jdict = {}
 
 """
 Handles all of the courses for a single subject.
@@ -120,7 +143,7 @@ class Subject:
                 data.append(string)
                 classdata.pop(0)
             # print(data[0:3], "===============", classdata[0].string, string)
-            self.courses.append(Course(data))
+            self.courses.append(Course(data, sub))
             if string == "Bookstore Link":
                 classdata.pop(0)
             
@@ -152,6 +175,11 @@ class Subject:
                 l -= 1
                 
             i += 1
+        
+
+        for C in self.courses:
+            print(C.crn)
+            C.dataPrep()
 
 
 
