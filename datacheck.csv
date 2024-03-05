@@ -85,7 +85,6 @@
 35657,CH E 5095-06,M, ,01/16/2024-05/07/2024,None, ,1,CLAS,Dissertation,Jianjia Yu,10,10,0,0,N/A,Bookstore Link
 34159,CHEM 0130-01,M,   W   ,01/16/2024-05/07/2024,1300-1350,LOPEZ 216,1,CLAS,Issues in Chem and Biochem,Jeff A. Altig,4,10,6,0,N/A,Bookstore Link
 35882,CHEM 0189-01,M, M W F ,03/11/2024-05/07/2024,1000-1050, ,2,CLAS,Chemistry of Explosives,Jeff A. Altig,-2,0,2,0,N/A,Bookstore Link
-None,None,    R  ,03/11/2024-05/07/2024,1400-1650, ,None,CLAS,None,Van Romero,None,None,None,None,None,None,None
 34150,CHEM 0289-01,M,    R  ,01/16/2024-05/07/2024,2000-2050,LOPEZ 106,1,CLAS,Chem Literature & Media,Jeff A. Altig,1,15,14,0,N/A,Bookstore Link
 34072,CHEM 1215-01,M, M W F ,01/16/2024-05/07/2024,1100-1150,LOPEZ 106,3,CLAS,General Chemistry I,Sally C. Pias,15,65,50,0,N/A,Bookstore Link
 34075,CHEM 1215L-01,M,  T    ,01/16/2024-05/07/2024,1400-1630,LOPEZ 135,1,CLAS,General Chemistry I Lab,Jeff A. Altig,9,24,15,0,$155,Bookstore Link
@@ -247,11 +246,7 @@ None,None,    R  ,03/11/2024-05/07/2024,1400-1650, ,None,CLAS,None,Van Romero,No
 35872,CONC 1020-01,M,  T R  ,01/16/2024-05/07/2024,1600-1700, ,0,CLAS,Non Credit Tai Chi Chuan,Pnina Miller,1,2,1,0,$185,Bookstore Link
 35244,CONC 1189-01,M,   W   ,01/16/2024-05/07/2024,1700-1845,RH ,0,CLAS,Rock, Blues & Folk Performance,Neil Haverstick,18,20,2,0,$150,Bookstore Link
 35808,CONC 3089-01,M,    R  ,01/16/2024-05/07/2024,None,MACEY ,0,CLAS,Live Entmt 4 Modules,Steve Simpson,1,5,4,0,$50,Bookstore Link
-None,None,     F ,01/16/2024-05/07/2024,None,MACEY ,None,CLAS,None,None,None,None,None,None,None,None,None
-None,None,      S,01/16/2024-05/07/2024,None,MACEY ,None,CLAS,None,None,None,None,None,None,None,None,None
 35809,CONC 3089-02,M,    R  ,01/16/2024-05/07/2024,None,MACEY ,0,CLAS,Live Entmt 8 Modules,Steve Simpson,-2,5,7,0,$100,Bookstore Link
-None,None,     F ,01/16/2024-05/07/2024,None,MACEY ,None,CLAS,None,None,None,None,None,None,None,None,None
-None,None,      S,01/16/2024-05/07/2024,None,MACEY ,None,CLAS,None,None,None,None,None,None,None,None,A
 34009,CSE 101-01,M, M W   ,01/16/2024-05/07/2024,1200-1250,CRAMER 213,2,CLAS,Intro Comp Sci & Info Tech,Sana'a Mahmoud Mohmmed Algaraibeh,14,28,14,0,N/A,Bookstore Link
 34106,CSE 101L-01,M,     F ,01/16/2024-05/07/2024,1200-1250,CRAMER 213,0,CLAS,Intro Comp Sci & Info Tech Lab,Sana'a Mahmoud Mohmmed Algaraibeh,14,28,14,0,$75,Bookstore Link
 34010,CSE 107-01,M, M W F ,01/16/2024-05/07/2024,1300-1350,CRAMER 120,4,CLAS,Intro to Programming Python,John H. Goettsche,24,40,16,0,N/A,Bookstore Link
@@ -756,7 +751,6 @@ None,None,      S,01/16/2024-05/07/2024,None,MACEY ,None,CLAS,None,None,None,Non
 34156,MATH 0289-01,M, M W F ,01/16/2024-05/07/2024,1100-1205,CRAMER 120,1,CLAS,Vector Calculus,Todd Wolford,5,5,0,0,N/A,Bookstore Link
 34157,MATH 0289-02,M, M W F ,01/16/2024-05/07/2024,1245-1350,CRAMER 239,1,CLAS,Vector Calculus,Gilbert Kerr,4,5,1,0,N/A,Bookstore Link
 34053,MATH 1220-01,M, M W F ,01/16/2024-05/07/2024,1100-1150,WEIR 203,3,CLAS,College Algebra,Rakhim Aitbayev,21,30,9,0,$30,Bookstore Link
-None,None,  T R  ,01/16/2024-05/07/2024,1100-1150,WEIR 203,None,CLAS,None,Kakoli Khatun,None,None,None,None,None,None,None
 34059,MATH 1230-01,M, M W F ,01/16/2024-05/07/2024,1400-1450,WEIR 132,3,CLAS,Trigonometry,Iain Crump,10,25,15,0,$30,Bookstore Link
 34060,MATH 1230-02,M, M W F ,01/16/2024-05/07/2024,1300-1350,CRAMER 107,3,CLAS,Trigonometry,Iain Crump,14,50,36,0,$30,Bookstore Link
 34061,MATH 1230L-01,M,  T R  ,01/16/2024-05/07/2024,1500-1615,MSEC 105,0,CLAS,Trigonometry Lab,Iain Crump,9,25,16,0,N/A,Bookstore Link
@@ -1005,7 +999,6 @@ None,None,  T R  ,01/16/2024-05/07/2024,1100-1150,WEIR 203,None,CLAS,None,Kakoli
 35505,PETR 3070L-01,M, M     ,01/16/2024-05/07/2024,1400-1630,MSEC 395,0,CLAS,Formation Evaluation Lab,Sajjad Esmaeilpour,6,20,14,0,$150,Bookstore Link
 35506,PETR 4013-01,M,  T R  ,01/16/2024-05/07/2024,1230-1345,MSEC 367,3,CLAS,Well Design,Tan Nguyen,5,19,14,0,N/A,Bookstore Link
 35507,PETR 4025-01,M, M W   ,01/16/2024-05/07/2024,1000-1050,MSEC 367,3,CLAS,Well Completion,Sajjad Esmaeilpour,14,19,5,0,N/A,Bookstore Link
-None,None,   W   ,01/16/2024-05/07/2024,1100-1150, ,None,CLAS,None,None,None,None,None,None,None,None,None
 35508,PETR 4025L-01,M,  T    ,01/16/2024-05/07/2024,1400-1630,MSEC 367,1,CLAS,Well Completions Lab,Tan Nguyen,15,19,4,0,$150,Bookstore Link
 35509,PETR 4045-01,M, M W F ,01/16/2024-05/07/2024,1300-1350,MSEC 195,3,CLAS,Reservoir Engineering II,Her Yuan Chen,2,20,18,0,N/A,Bookstore Link
 35510,PETR 4050-01,M,  T R  ,01/16/2024-05/07/2024,0930-1045,JONES 227,3,CLAS,Well Performance,Sajjad Esmaeilpour,10,25,15,0,$10,Bookstore Link
@@ -1065,17 +1058,11 @@ None,None,   W   ,01/16/2024-05/07/2024,1100-1150, ,None,CLAS,None,None,None,Non
 35765,PHYS 1113L-01,M,  T    ,01/16/2024-05/07/2024,1400-1550,WORKC 110,1,CLAS,Atmospheric Measurements Lab,Kenneth R. Minschwaner,1,12,11,0,$50,Bookstore Link
 35799,PHYS 1113L-02,M,    R  ,01/16/2024-05/07/2024,1400-1550,WORKC 110,1,CLAS,Atmospheric Measurements Lab,Kenneth R. Minschwaner,3,12,9,0,$50,Bookstore Link
 34025,PHYS 1310-01,M,  T R  ,01/16/2024-05/07/2024,0930-1045,WORKC 101,4,CLAS,Calculus-based Physics I,Minnie Y. Mao,5,25,20,0,$50,Bookstore Link
-None,None,   W   ,01/16/2024-05/07/2024,1700-1850,WORKC 109,None,RCT,None,Rebecca Proni,None,None,None,None,None,None,None
 34026,PHYS 1310-02,M,  T R  ,01/16/2024-05/07/2024,0930-1045,WORKC 101,4,CLAS,Calculus-based Physics I,Minnie Y. Mao,0,25,25,0,$50,Bookstore Link
-None,None,    R  ,01/16/2024-05/07/2024,1400-1550,WORKC 109,None,RCT,None,Barbara Olivares Carvajal,None,None,None,None,None,None,None
 34027,PHYS 1310-03,M,  T R  ,01/16/2024-05/07/2024,0930-1045,WORKC 101,4,CLAS,Calculus-based Physics I,Minnie Y. Mao,0,25,25,0,$50,Bookstore Link
-None,None,    R  ,01/16/2024-05/07/2024,1700-1850,WORKC 109,None,RCT,None,Nirupam Roy,None,None,None,None,None,None,None
 34028,PHYS 1310-04,M, M W F ,01/16/2024-05/07/2024,1100-1150,WORKC 101,4,CLAS,Calculus-based Physics I,Minnie Y. Mao,14,25,11,0,$50,Bookstore Link
-None,None,  T    ,01/16/2024-05/07/2024,1400-1550,WORKC 109,None,RCT,None,Barbara Olivares Carvajal,None,None,None,None,None,None,None
 34029,PHYS 1310-05,M, M W F ,01/16/2024-05/07/2024,1100-1150,WORKC 101,4,CLAS,Calculus-based Physics I,Minnie Y. Mao,1,25,24,0,$50,Bookstore Link
-None,None,  T    ,01/16/2024-05/07/2024,1700-1850,WORKC 109,None,RCT,None,Nirupam Roy,None,None,None,None,None,None,None
 34030,PHYS 1310-06,M, M W F ,01/16/2024-05/07/2024,1100-1150,WORKC 101,4,CLAS,Calculus-based Physics I,Minnie Y. Mao,16,25,9,0,$50,Bookstore Link
-None,None,   W   ,01/16/2024-05/07/2024,1900-2050,WORKC 109,None,RCT,None,Roberto Niardi,None,None,None,None,None,None,None
 34031,PHYS 1310L-01,M, M     ,01/16/2024-05/07/2024,1400-1620,WORKC 115,1,CLAS,Calculus-based Physics I Lab,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 34032,PHYS 1310L-02,M, M     ,01/16/2024-05/07/2024,1630-1850,WORKC 115,1,CLAS,Calculus-based Physics I Lab,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 34033,PHYS 1310L-03,M,  T    ,01/16/2024-05/07/2024,1400-1620,WORKC 115,1,CLAS,Calculus-based Physics I Lab,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
@@ -1085,17 +1072,11 @@ None,None,   W   ,01/16/2024-05/07/2024,1900-2050,WORKC 109,None,RCT,None,Robert
 34036,PHYS 1310L-07,M,    R  ,01/16/2024-05/07/2024,1400-1620,WORKC 115,1,CLAS,Calculus-based Physics I Lab,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 34037,PHYS 1310L-08,M,    R  ,01/16/2024-05/07/2024,1700-1920,WORKC 115,1,CLAS,Calculus-based Physics I Lab,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 34038,PHYS 1320-01,M, M W F ,01/16/2024-05/07/2024,1000-1050,WORKC 101,4,CLAS,Calculus-based Physics II,Minnie Y. Mao,0,25,25,0,$50,Bookstore Link
-None,None,  T    ,01/16/2024-05/07/2024,1400-1550,WORKC 113,None,RCT,None,Genna Crom,None,None,None,None,None,None,None
 34039,PHYS 1320-02,M, M W F ,01/16/2024-05/07/2024,1000-1050,WORKC 101,4,CLAS,Calculus-based Physics II,Minnie Y. Mao,0,26,26,0,$50,Bookstore Link
-None,None,   W   ,01/16/2024-05/07/2024,1700-1850,WORKC 113,None,RCT,None,Ananay Sethi,None,None,None,None,None,None,None
 34040,PHYS 1320-03,M, M W F ,01/16/2024-05/07/2024,1000-1050,WORKC 101,4,CLAS,Calculus-based Physics II,Minnie Y. Mao,0,25,25,0,$50,Bookstore Link
-None,None,    R  ,01/16/2024-05/07/2024,1400-1550,WORKC 113,None,RCT,None,Genna Crom,None,None,None,None,None,None,None
 35775,PHYS 1320-04,M,  T R  ,01/16/2024-05/07/2024,1100-1215,WORKC 101,4,CLAS,Calculus-based Physics II,Richard Sonnenfeld,0,20,20,0,N/A,Bookstore Link
-None,None,  T    ,01/16/2024-05/07/2024,1700-1850,WORKC 113,None,RCT,None,Roberto Niardi,None,None,None,None,None,None,None
 34112,PHYS 1320-05,M,  T R  ,01/16/2024-05/07/2024,1100-1215,WORKC 101,4,CLAS,Calculus-based Physics II,Richard Sonnenfeld,12,25,13,0,$50,Bookstore Link
-None,None,    R  ,01/16/2024-05/07/2024,1900-2050,WORKC 113,None,RCT,None,Chamindri S. Hemendra,None,None,None,None,None,None,None
 34368,PHYS 1320-06,M,  T R  ,01/16/2024-05/07/2024,1100-1215,WORKC 101,4,CLAS,Calculus-based Physics II,Richard Sonnenfeld,2,20,18,0,$50,Bookstore Link
-None,None,   W   ,01/16/2024-05/07/2024,1900-2050,WORKC 113,None,CLAS,None,Rebecca Proni,None,None,None,None,None,None,None
 34042,PHYS 1320L-01,M, M     ,01/16/2024-05/07/2024,1400-1620,WORKC 107,1,CLAS,Calculus-based Physics Lab II,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 34043,PHYS 1320L-02,M, M     ,01/16/2024-05/07/2024,1630-1850,WORKC 107,1,CLAS,Calculus-based Physics Lab II,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 34044,PHYS 1320L-03,M,  T    ,01/16/2024-05/07/2024,1400-1620,WORKC 107,1,CLAS,Calculus-based Physics Lab II,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
@@ -1106,11 +1087,9 @@ None,None,   W   ,01/16/2024-05/07/2024,1900-2050,WORKC 113,None,CLAS,None,Rebec
 34126,PHYS 1320L-08,M,    R  ,01/16/2024-05/07/2024,1700-1920,WORKC 107,1,CLAS,Calculus-based Physics Lab II,Carlos S. Lopez Carrillo,0,16,16,0,$50,Bookstore Link
 35841,PHYS 1320L-09,M, M     ,01/16/2024-05/07/2024,1900-2050,WORKC 107,1,CLAS,Calculus-based Physics Lab II,Carlos S. Lopez Carrillo,11,16,5,0,$35,Bookstore Link
 35526,PHYS 2251-01,M, M W F ,01/16/2024-05/07/2024,1000-1050,WORKC 109,4,CLAS,Comprehensive Physics II,David S. Meier,2,25,23,0,N/A,Bookstore Link
-None,None,   W   ,01/16/2024-05/07/2024,1300-1450,WORKC 109,None,CLAS,None,None,None,None,None,None,None,None,None
 35527,PHYS 2251L-01,M,  T    ,01/16/2024-05/07/2024,1400-1620,WORKC 322,1,CLAS,Comprehensive Phys II Lab,Carlos S. Lopez Carrillo,0,12,12,0,$50,Bookstore Link
 35528,PHYS 2251L-02,M,    R  ,01/16/2024-05/07/2024,1400-1620,WORKC 322,1,CLAS,Comprehensive Phys II Lab,Carlos S. Lopez Carrillo,0,12,12,0,$50,Bookstore Link
 35529,PHYS 2425-01,M,  T R  ,01/16/2024-05/07/2024,1100-1215,SPEARE 16,3,CLAS,Computational Physics II,Ryan P. Norris,1,25,24,0,N/A,Bookstore Link
-None,None,    R  ,01/16/2024-05/07/2024,1800-2000,SPEARE 16,None,CLAS,None,None,None,None,None,None,None,None,None
 35797,PHYS 3001-01,M,     F ,01/16/2024-05/07/2024,1400-1630,WORKC 121,1,CLAS,Lab & Shop Techniques,Michael A. Chavez,0,6,6,0,N/A,Bookstore Link
 35530,PHYS 3026-01,M,  T R  ,01/16/2024-05/07/2024,1100-1215,WORKC 310,3,CLAS,Astrophysics II,David S. Meier,6,15,9,0,N/A,Bookstore Link
 35733,PHYS 3028L-01,M, M     ,01/16/2024-05/07/2024,1701-1750,WORKC 310,1,CLAS,Astronomy Laboratory,David S. Meier,7,12,5,0,$100,Bookstore Link

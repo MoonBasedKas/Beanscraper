@@ -21,6 +21,8 @@ class LectureSession:
 
 class Course:
 
+    Sessions = []
+
     def __init__(self, data):
         self.dlist = data # Raw data.
 
@@ -41,7 +43,28 @@ class Course:
         self.waitlist = str(data[14])
         self.fee = str(data[15])
         self.book = str(data[16])
-        # TODO add the section as part of cleaning.
+
+        self.buildSessions()
+
+    def buildSessions(self):
+        times = self.time.split("-")
+        if len(times) != 2:
+            return -1
+        
+        info = ["", self.room, times[0], times[1]]
+        for x in self.day:
+            info[0] = x 
+            self.Sessions.append(LectureSession(info))
+        return 0
+
+    def addSessions(self, info):
+        times = info[-1].split("-")
+        info[2] = times[0]
+        info.append(times[1])
+        self.Sessions.append(LectureSession(info))
+
+
+        pass
     """
     Gives a list of all the attributes since inputing them all one by one is PAIN.
     """
@@ -110,19 +133,23 @@ class Subject:
         i = 0
         l = len(self.courses)
         temp = None
+        info = []
 
         while i < l:
             temp = self.courses[i]
             if temp.crn == "None":
                 if temp.campus == "None": # Two professors
-                    # print(temp.dlist[9])
+
                     self.courses[i - 1].teacher += " " + str(temp.dlist[9])
-                    # print(self.courses[i - 1].teacher)
-                    self.courses.pop(i)
-                    i -= 1
-                    l -= 1
+
                 else: # Recitations
-                    pass
+                    info.append(temp.dlist[2])
+                    info.append(temp.dlist[5])
+                    info.append(temp.dlist[4])
+                    info = []
+                self.courses.pop(i)
+                i -= 1
+                l -= 1
                 
             i += 1
 
@@ -224,7 +251,7 @@ def main():
     data = Scrapper()
 
 
-    # data.writeCVS() 
+    data.writeCVS() 
 
     
 
