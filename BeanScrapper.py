@@ -20,10 +20,10 @@ class LectureSession:
 
     def jsonify(self):
         data = {}
-        data["Day"] = self.day
-        data["Location"] = self.location
-        data["StartTime"] = self.start
-        data["EndTime"] = self.end
+        data["day"] = self.day
+        data["location"] = self.location
+        data["startTime"] = self.start
+        data["endTime"] = self.end
         return data
 
 
@@ -130,24 +130,24 @@ class Course:
     """
     def jsonify(self):
         jdict = {}
-        jdict["Title"] = self.name
-        jdict["Subject"] = self.subject
-        jdict["CourseNumber"] = self.Cnumber
-        jdict["CRN"] = self.crn
-        jdict["Section"] = self.section
+        jdict["title"] = self.name
+        jdict["subject"] = self.subject
+        jdict["courseNumber"] = self.Cnumber
+        jdict["crn"] = self.crn
+        jdict["section"] = self.section
 
-        jdict["Campus"] = self.campus
-        jdict["CreditHours"] = self.hrs
+        jdict["campus"] = self.campus
+        jdict["creditHours"] = self.hrs
         # jdict["classType"] = self.type
-        jdict["Professor"] = self.teacher
+        jdict["professor"] = self.teacher
 
-        jdict["Seats"] = self.seats
-        jdict["SeatCapacity"] = self.limits
-        jdict["Enrolled"] = self.enroll
-        jdict["Waitlist"] = self.waitlist
-        jdict["CourseFee"] = self.fee
+        jdict["seats"] = self.seats
+        jdict["seatCapacity"] = self.limits
+        jdict["enrolled"] = self.enroll
+        jdict["waitlist"] = self.waitlist
+        jdict["courseFee"] = self.fee
 
-        jdict["BookStore"] = self.book
+        jdict["bookStoreLink"] = self.book
 
 
 
@@ -155,8 +155,8 @@ class Course:
         for meet in self.Sessions:
             meetings.append(meet.jsonify())
 
-        jdict["Sessions"] = meetings
-        jdict["LastUpdated"] = self.lastUpdated
+        jdict["sessions"] = meetings
+        jdict["timeStamp"] = self.lastUpdated
 
         return jdict
 
